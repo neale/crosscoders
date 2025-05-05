@@ -1,0 +1,21 @@
+[project]
+name = "crosscoders"
+version = "0.1.0"
+description = "General training of cross-layer transcoders on LLMs"
+authors = [
+    {name = "neale",email = "nealeratzlaff@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "transformers (>=4.51.3,<5.0.0)",
+    "transformer-lens (>=2.15.0,<3.0.0)",
+    "einops (>=0.8.1,<0.9.0)",
+    "datasets (>=3.5.1,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

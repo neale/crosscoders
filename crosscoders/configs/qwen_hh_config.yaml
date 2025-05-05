@@ -1,0 +1,30 @@
+# Model configuration
+model_name: "Qwen/Qwen2.5-0.5B-Instruct"
+device: "cuda:0"  # or "cpu" if no GPU
+dtype: "bf16"     # Use bf16 for memory efficiency
+site: "resid_post"
+
+# Data configuration
+data_source: "Anthropic/hh-rlhf"
+data_type: "hf"
+text_column: "chosen"  # We'll use the 'chosen' responses
+num_samples: 10000    # Start with a small subset for testing
+save_tokens: "data/hh_rlhf_qwen_tokens.pt"
+
+# Training configuration
+batch_size: 32        # Small batch size for laptop
+buffer_mult: 32       # Smaller buffer multiplier
+lr: 1e-4             # Learning rate
+l1_coeff: 1.0        # L1 regularization coefficient
+dict_size: 8192      # Smaller dictionary size for testing
+num_tokens: 1000000  # Total number of tokens to train on
+seq_len: 512         # Sequence length
+model_batch_size: 8  # Small model batch size
+
+# Logging and saving
+log_every: 100       # Log more frequently for testing
+save_every: 10000    # Save checkpoints more frequently
+save_dir: "checkpoints/qwen_hh"  # Where to save checkpoints
+
+# Normalization
+save_norm_factors: "configs/qwen_hh_norm_factors.json"

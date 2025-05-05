@@ -1,0 +1,5 @@
+{
+    "model_name": "your-three-layer-model-name",
+    "site": "resid_post",
+    "factors": [1.0, 1.1, 1.2]  
+}
