@@ -90,10 +90,9 @@ class DataLoader:
         """
         logger.info(f"Loading dataset {dataset_name} from HuggingFace")
         dataset = load_dataset(dataset_name, split=split)
-        
+        logger.info(f'Loaded dataset with {len(dataset)} samples, using at most {num_samples}')
         if num_samples is not None:
             dataset = dataset.select(range(min(num_samples, len(dataset))))
-            
         texts = dataset[text_column]
         return self._tokenize_texts(texts)
         
@@ -126,7 +125,7 @@ class DataLoader:
             )
             
             # Move to device and convert dtype
-            tokens = tokenized['input_ids'].to(device=self.device, dtype=self.dtype)
+            tokens = tokenized['input_ids'].to(self.device)
             all_tokens.append(tokens)
             
         # Concatenate all batches
